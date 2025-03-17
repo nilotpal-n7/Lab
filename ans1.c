@@ -35,6 +35,7 @@ void single_num(char *num1, char *num2, int t, char *ans) {
 
         else {
             ans[i + t] = res + '0';
+            carry = 0;
         };
 
         i++;
@@ -42,7 +43,7 @@ void single_num(char *num1, char *num2, int t, char *ans) {
 
     if(carry)
         ans[i + t] = carry + '0';
-
+        
     single_num(num1, num2, t + 1, ans);
 }
 
