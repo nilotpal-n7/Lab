@@ -1,13 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int **alloc(int **arr, int r, int c, int n) {
-    arr = (int **)malloc(n * sizeof(int *));
+void alloc(int ***arr, int r, int c, int n) {
+    *arr = (int **)malloc(n * sizeof(int *));
     for(int i = 0; i < n; i++) {
-        arr[i] = (int *)malloc(3 * sizeof(int));
-        scanf("%d %d %d", arr[i], arr[i] + 1, arr[i] + 2);
+        (*arr)[i] = (int *)malloc(3 * sizeof(int));
+        scanf("%d %d %d", (*arr)[i], (*arr)[i] + 1, (*arr)[i] + 2);
     }
-    return arr;
 }
 
 void m_free(int **arr, int n) {
@@ -20,9 +19,9 @@ int main() {
     int r1, c1, n1, **arr1;
     int r2, c2, n2, **arr2;
     scanf("%d %d %d", &r1, &c1, &n1);
-    arr1 = alloc(arr1, r1, c1, n1);
+    alloc(&arr1, r1, c1, n1);
     scanf("%d %d %d", &r2, &c2, &n2);
-    arr2 = alloc(arr2, r2, c2, n2);
+    alloc(&arr2, r2, c2, n2);
 
     if(r1 == r2 && c1 == c2){
         int n = n1;
